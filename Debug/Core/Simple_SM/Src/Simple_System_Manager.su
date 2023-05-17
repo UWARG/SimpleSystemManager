@@ -1,0 +1,6 @@
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:10:16:void __tcf_0()	8	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:9:6:static SSM& SSM::getInstance()	8	static,ignoring_inline_asm
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:14:6:void SSM::execute_manual_mode()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:20:6:void SSM::fetch_command()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:25:6:bool SSM::transmit_command()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:31:6:void SSM::config()	16	static
