@@ -8,12 +8,30 @@
 #ifndef SIMPLE_SM_INC_SIMPLE_SYTEM_MANAGER_HPP_
 #define SIMPLE_SM_INC_SIMPLE_SYTEM_MANAGER_HPP_
 
+#include "main.h"
 #include "../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp"
+#include "../../Los_Driver/Inc/LOS_D_SBUSSender.hpp"
 
-enum drone_state
+enum Drone_State
 {
     manual,         //high level manual and autonomous
     autonomous
+};
+
+enum Flight_Mode {
+    /*  flight mode = flight mode number*/
+    /*  this is okay to configure*/
+    stablize = 1, 
+    alt_hold,
+    loiter,
+    RTL,
+    autonomous,
+    acro
+};
+
+enum Drone_Arm{
+    armed,
+    disarmed
 };
 
 class SSM
@@ -29,7 +47,7 @@ class SSM
     /*
         get the instance of the singlton just in case we need it
     */
-        static SSM &getInstance();
+        static SSM* getInstance();
 
     /*
         the function can be called when the drone only wants to be
@@ -47,7 +65,12 @@ class SSM
         void execute();
 
     private:
-        drone_state status_;
+        Drone_State status_;
+        Flight_Mode flight_mode_;
+        Drone_Arm drone_arm_;
+        static SSM* singleton_;
+        SBUSReceiver* sbus_receive_handle_;
+        SBUSSender*  sbus_sender_handle_;
 
         SSM();
         ~SSM();
@@ -58,18 +81,18 @@ class SSM
         fetch ppm/sbus data from receiver
         this data is supposed to be the rc control input
     */
-        void fetch_command();
+        void fetch_command(SBus &sbus_data);
 
     /*
         check the ppm signal quality by checking the rssi
         or by learning whether or not we received anything
     */
-        bool check_connection();
+        bool check_connection(SBus &sbus_data);
 
     /*
         transmit the packaged ppm/sbus signal to pixhawk
     */
-        bool transmit_command();
+        bool transmit_command(SBus &sbus_data);
 
     /*
         set the flag and other parameters to the correct configuration

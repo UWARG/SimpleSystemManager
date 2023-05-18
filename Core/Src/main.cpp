@@ -102,8 +102,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
 
-  SBUSReceiver sbus_receive(&huart2);
-  SBUSSender   sbus_send(&huart2);
   SBus sbus_data;
   uint8_t raw_data[25] = {0};
   HAL_StatusTypeDef ret;
@@ -117,9 +115,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	sbus_data = sbus_receive.GetResult();
-	sbus_send.SetSBusValue(sbus_data);
-	sbus_send.SendData();
+
 	//ret = HAL_UART_Receive(&huart2, raw_data, 25, 100);
 
 	//HAL_Delay(100);

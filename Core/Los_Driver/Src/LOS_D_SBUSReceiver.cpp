@@ -1,5 +1,13 @@
 #include "../Inc/LOS_D_SBUSReceiver.hpp"
 
+SBUSReceiver* SBUSReceiver::getInstance(UART_HandleTypeDef* uart){
+    if (singleton_ == NULL)
+      singleton_ = new SBUSReceiver(uart);
+       
+    // returning the instance pointer
+    return singleton_;
+}
+
 SBUSReceiver::SBUSReceiver(UART_HandleTypeDef* uart) : uart_(uart)
 {
     for(int i = 0; i < SBUS_INPUT_CHANNELS; i++)
@@ -14,9 +22,15 @@ SBUSReceiver::SBUSReceiver(UART_HandleTypeDef* uart) : uart_(uart)
 
 }
 
-SBus SBUSReceiver::GetResult(){
-        read();
-        return received_sbus_;
+SBus SBUSReceiver::GetSBUS(){
+    read();
+    return received_sbus_;
+}
+
+RCControl SBUSReceiver::GetRCControl()
+{
+    read();
+    return received_rccontrol_;
 }
 
  void SBUSReceiver::read()
@@ -24,7 +38,10 @@ SBus SBUSReceiver::GetResult(){
     received_sbus_.new_data = false;
     //if(HAL_UART_Receive(uart_, raw_sbus_, SBUS_FRAME_SIZE, 100) == HAL_OK)
     if(parse() == true)
+    {
         received_sbus_.new_data = true;
+        cast_rccontrol();
+    }
 }
 
 bool SBUSReceiver::parse()
@@ -106,4 +123,20 @@ bool SBUSReceiver::parse()
 
     return false;
 }
+
+void SBUSReceiver::cast_rccontrol()
+{
+    for(uint8_t i = 0; i < 16; i++){
+        received_rccontrol_.ControlSignals[i] = sbus_to_rccontrol(received_sbus_.ch[i]);
+    }
+}
+
+ float SBUSReceiver::sbus_to_rccontrol(uint16_t channel_value)
+ {
+    if(channel_value < SBUS_RANGE_MIN)
+        channel_value = SBUS_RANGE_MIN;
+    if(channel_value > SBUS_RANGE_MAX)
+        channel_value = SBUS_RANGE_MAX;
+    return static_cast<float>((channel_value - SBUS_RANGE_MIN) * (100.0f / SBUS_RANGE_RANGE));
+ }
 

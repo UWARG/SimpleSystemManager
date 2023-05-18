@@ -8,33 +8,50 @@
 
 class SBUSSender{
     public:
-        SBUSSender(UART_HandleTypeDef* uart);
+    /*
+        serve for singleton structure application
+        the code doesn't allow the class to make copy of its instance
+    */
+        SBUSSender (const SBUSSender*) = delete;
+        SBUSSender &operator= (const SBUSSender&) = delete;
 
-        /* 
-            select the channel from 1 - 16
-            set the value from 192 - 1792
-        */
-        void SetChannelValue(uint8_t channel, uint16_t value);
+        static SBUSSender* getInstance(UART_HandleTypeDef* uart);
 
-        /*
-            directly setup a whole sbus message
-        */
+
+    /* 
+        select the channel from 1 - 16
+        set the value from 0 to 100 float as percentage
+    */
+        void SetChannelValue(uint8_t channel, float value);
+
+    /*
+        directly setup a whole sbus message
+    */
         void SetSBusValue(SBus values);
 
-        /*
-            send out the configured data as an UART/SBUS message
-        */
+
+    /*
+        setup channel percentage values and parse it to sbus message
+    */
+        void SetRCControlValue(RCControl values);
+
+    /*
+        send out the configured data as an UART/SBUS message
+    */
         void SendData();
 
     private:
-        // member variables
+    /* constructor*/
+        SBUSSender(UART_HandleTypeDef* uart);
+    // member variables
+        static SBUSReceiver* singleton_;
         UART_HandleTypeDef* uart_;
         SBus send_sbus_;
         uint8_t send_buf_[SBUS_FRAME_SIZE];
 
-        //helping functions
+    //helping functions
         void assemble_packet();
-
+        uint16_t rccontrol_to_sbus(float rccontrol);
 };
 
 

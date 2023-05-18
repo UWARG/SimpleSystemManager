@@ -1,15 +1,30 @@
 #include "../Inc/LOS_D_SBUSSender.hpp"
 
+SBUSSender* SBUSSender::getInstance(UART_HandleTypeDef* uart){
+    if (singleton_ == NULL)
+      singleton_ = new SBUSSender(uart);
+       
+    // returning the instance pointer
+    return singleton_;
+}
+
 SBUSSender::SBUSSender(UART_HandleTypeDef* uart) : uart_(uart){
 
 }
 
-void SBUSSender::SetChannelValue(uint8_t channel, uint16_t value){
-
+void SBUSSender::SetChannelValue(uint8_t channel, float value){
+  send_sbus_.ch[channel] = rccontrol_to_sbus(value);
 }
 
 void SBUSSender::SetSBusValue(SBus values){
     send_sbus_ = values;
+}
+
+void SBUSSender::SetRCControlValue(RCControl values)
+{
+    for(uint8_t i = 0; i < 16; i++){
+      send_sbus_.ch[i] = rccontrol_to_sbus(values.ControlSignals[i]);
+    }
 }
 
 void SBUSSender::SendData(){
@@ -60,4 +75,13 @@ void SBUSSender::assemble_packet()
              (send_sbus_.failsafe * FAILSAFE_MASK_) |
              (send_sbus_.lost_frame * LOST_FRAME_MASK_);
   send_buf_[24] = FOOTER_;
+}
+
+uint16_t rccontrol_to_sbus(float rccontrol)
+{
+    if (rccontrol < 0)
+      rccontrol = 0;
+    if (rccontrol > 100)
+      rccontrol = 100;
+    return static_cast<uint16_t>(SBUS_RANGE_MIN + (rccontrol * SBUS_RANGE_RANGE / 100.0f));
 }
