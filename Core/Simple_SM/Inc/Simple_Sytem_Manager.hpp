@@ -25,7 +25,7 @@ enum Flight_Mode {
     alt_hold,
     loiter,
     RTL,
-    autonomous,
+    autoo,
     acro
 };
 

@@ -1,6 +1,9 @@
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:10:16:void __tcf_0()	8	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:9:6:static SSM& SSM::getInstance()	8	static,ignoring_inline_asm
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:14:6:void SSM::execute_manual_mode()	16	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:20:6:void SSM::fetch_command()	16	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:25:6:bool SSM::transmit_command()	16	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:31:6:void SSM::config()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:11:6:static SSM* SSM::getInstance()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:20:6:void SSM::execute_manual_mode()	56	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:27:1:SSM::SSM()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:31:1:SSM::~SSM()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:36:6:void SSM::config()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:41:6:void SSM::fetch_command(SBus&)	160	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:72:6:bool SSM::transmit_command(SBus&)	64	static
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/CommonDataTypes.h:22:5:ControlRef<Index, T>::operator T&() [with unsigned char Index = 7; T = float]	16	static
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/CommonDataTypes.h:41:10:bool ControlRef<Index, T>::operator<(const T&) [with unsigned char Index = 7; T = float]	16	static

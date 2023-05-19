@@ -1,7 +1,9 @@
 #include "../Inc/LOS_D_SBUSSender.hpp"
 
+SBUSSender* SBUSSender::singleton_ = NULL;
+
 SBUSSender* SBUSSender::getInstance(UART_HandleTypeDef* uart){
-    if (singleton_ == NULL)
+    if (singleton_ == nullptr)
       singleton_ = new SBUSSender(uart);
        
     // returning the instance pointer
@@ -9,11 +11,21 @@ SBUSSender* SBUSSender::getInstance(UART_HandleTypeDef* uart){
 }
 
 SBUSSender::SBUSSender(UART_HandleTypeDef* uart) : uart_(uart){
+	for(int i = 0; i < SBUS_INPUT_CHANNELS; i++)
+	{
+		send_sbus_.ch[i] = 1000;
+	}
+	send_sbus_.ch17 = false;
+	send_sbus_.ch18 = false;
+	send_sbus_.failsafe = false;
+	send_sbus_.lost_frame = false;
+	send_sbus_.new_data = false;
 
+	HAL_UART_Transmit_DMA(uart_, send_buf_, SBUS_FRAME_SIZE);
 }
 
 void SBUSSender::SetChannelValue(uint8_t channel, float value){
-  send_sbus_.ch[channel] = rccontrol_to_sbus(value);
+	send_sbus_.ch[channel] = rccontrol_to_sbus(value);
 }
 
 void SBUSSender::SetSBusValue(SBus values){
@@ -25,11 +37,6 @@ void SBUSSender::SetRCControlValue(RCControl values)
     for(uint8_t i = 0; i < 16; i++){
       send_sbus_.ch[i] = rccontrol_to_sbus(values.ControlSignals[i]);
     }
-}
-
-void SBUSSender::SendData(){
-    assemble_packet();
-    HAL_StatusTypeDef ret = HAL_UART_Transmit(uart_, send_buf_, SBUS_FRAME_SIZE, 100);
 }
 
 void SBUSSender::assemble_packet()
@@ -84,4 +91,10 @@ uint16_t rccontrol_to_sbus(float rccontrol)
     if (rccontrol > 100)
       rccontrol = 100;
     return static_cast<uint16_t>(SBUS_RANGE_MIN + (rccontrol * SBUS_RANGE_RANGE / 100.0f));
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+	SBUSSender::getInstance(huart)->assemble_packet();
+	HAL_UART_Transmit_DMA (huart, SBUSSender::getInstance(huart)->send_buf_, SBUS_FRAME_SIZE);
 }

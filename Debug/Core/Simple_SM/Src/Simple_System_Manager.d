@@ -1,8 +1,7 @@
 Core/Simple_SM/Src/Simple_System_Manager.o: \
  ../Core/Simple_SM/Src/Simple_System_Manager.cpp \
- ../Core/Simple_SM/Src/../Inc/Simple_Sytem_Manager.hpp \
- ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp \
- ../Core/Inc/main.h ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
+ ../Core/Simple_SM/Src/../Inc/Simple_Sytem_Manager.hpp ../Core/Inc/main.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rcc.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_def.h \
@@ -51,11 +50,12 @@ Core/Simple_SM/Src/Simple_System_Manager.o: \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
+ ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp \
  ../Core/Inc/usart.h ../Core/Inc/main.h \
  ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/CommonDataTypes.h \
- ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/SBUSCommenDefines.h
+ ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/SBUSCommenDefines.h \
+ ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/LOS_D_SBUSSender.hpp
 ../Core/Simple_SM/Src/../Inc/Simple_Sytem_Manager.hpp:
-../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:
@@ -106,7 +106,9 @@ Core/Simple_SM/Src/Simple_System_Manager.o: \
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp:
 ../Core/Inc/usart.h:
 ../Core/Inc/main.h:
 ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/CommonDataTypes.h:
 ../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/SBUSCommenDefines.h:
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/LOS_D_SBUSSender.hpp:

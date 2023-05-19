@@ -6,6 +6,8 @@
  */
 #include "../Inc/Simple_Sytem_Manager.hpp"
 
+SSM* SSM::singleton_= NULL;
+
 SSM* SSM::getInstance(){
     if (singleton_ == NULL)
       singleton_ = new SSM();
@@ -13,6 +15,7 @@ SSM* SSM::getInstance(){
     // returning the instance pointer
     return singleton_;
 }
+
 
 void SSM::execute_manual_mode()
 {
@@ -62,13 +65,13 @@ void SSM::fetch_command(SBus &sbus_data)
 
     if(flight_mode_ == stablize || flight_mode_ == alt_hold || flight_mode_ == loiter || flight_mode_ == acro)
         status_ = manual;
-    if(flight_mode_ == RTL || flight_mode_ == Flight_Mode::autonomous)
-        status_ = Drone_State::autonomous;
+    if(flight_mode_ == RTL || flight_mode_ == autoo)
+        status_ = autonomous;
 }
 
 bool SSM::transmit_command(SBus &sbus_data)
 {
     sbus_sender_handle_->SetSBusValue(sbus_data);
-    sbus_sender_handle_->SendData();
+    //sbus_sender_handle_->SendData();
 }
 

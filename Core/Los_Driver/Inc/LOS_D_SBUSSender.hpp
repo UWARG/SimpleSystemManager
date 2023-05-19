@@ -8,6 +8,11 @@
 
 class SBUSSender{
     public:
+	/*
+	 	public variable
+	 */
+		uint8_t send_buf_[SBUS_FRAME_SIZE];
+
     /*
         serve for singleton structure application
         the code doesn't allow the class to make copy of its instance
@@ -35,22 +40,23 @@ class SBUSSender{
     */
         void SetRCControlValue(RCControl values);
 
+
+        void assemble_packet();
+
     /*
         send out the configured data as an UART/SBUS message
     */
-        void SendData();
+        //void SendData(); //deleted because now it uses dma to send automatically
 
     private:
     /* constructor*/
         SBUSSender(UART_HandleTypeDef* uart);
     // member variables
-        static SBUSReceiver* singleton_;
+        static SBUSSender* singleton_;
         UART_HandleTypeDef* uart_;
         SBus send_sbus_;
-        uint8_t send_buf_[SBUS_FRAME_SIZE];
 
     //helping functions
-        void assemble_packet();
         uint16_t rccontrol_to_sbus(float rccontrol);
 };
 

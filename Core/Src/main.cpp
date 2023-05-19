@@ -101,9 +101,8 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
-
   SBus sbus_data;
-  uint8_t raw_data[25] = {0};
+  RCControl control_data;
   HAL_StatusTypeDef ret;
 
   /* USER CODE END 2 */
@@ -113,10 +112,11 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    
     /* USER CODE BEGIN 3 */
-
-	//ret = HAL_UART_Receive(&huart2, raw_data, 25, 100);
+    sbus_data = SBUSReceiver::getInstance(&huart2)->GetSBUS();
+    control_data = SBUSReceiver::getInstance(&huart2)->GetRCControl();
+    SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
 
 	//HAL_Delay(100);
   }

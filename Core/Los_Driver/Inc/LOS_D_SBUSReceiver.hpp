@@ -6,6 +6,17 @@
 #include "CommonDataTypes.h"
 #include "SBUSCommenDefines.h"
 
+/*
+ * UART Config for this sbus driver
+ * Word Length - 9 bits(Including Parity)
+ * Parity - Even
+ * Stop Bits - 2
+ * enable dma interrupt for uart_rx
+ * also in order to let stm to detect the uart, the input signal
+ * has to be in the standard uart polarity
+ * (which sometimes the sbus has the inverted polarity)
+ */
+
 class SBUSReceiver{
     public:
     /*
@@ -30,6 +41,11 @@ class SBUSReceiver{
     */
         RCControl GetRCControl();
 
+        void parse();
+    /*
+        public variable
+    */
+        uint8_t raw_sbus_[SBUS_FRAME_SIZE];
 
     private:
 
@@ -41,19 +57,12 @@ class SBUSReceiver{
     
     // member variables
         static SBUSReceiver* singleton_;
-        uint8_t raw_sbus_[SBUS_FRAME_SIZE];
         UART_HandleTypeDef* uart_;
         SBus received_sbus_;
         RCControl received_rccontrol_;
 
-    /* Parsing state tracking */
-        int8_t state_ = 0;
-        uint8_t prev_byte_ = FOOTER_;
-        uint8_t cur_byte_;
-
     //private functions
         void read();
-        bool parse();
         void cast_rccontrol();
         float sbus_to_rccontrol(uint16_t channel_value);
 
