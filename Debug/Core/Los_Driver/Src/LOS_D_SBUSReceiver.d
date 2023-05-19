@@ -52,7 +52,8 @@ Core/Los_Driver/Src/LOS_D_SBUSReceiver.o: \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
  ../Core/Inc/usart.h ../Core/Inc/main.h \
  ../Core/Los_Driver/Src/../Inc/CommonDataTypes.h \
- ../Core/Los_Driver/Src/../Inc/SBUSCommenDefines.h
+ ../Core/Los_Driver/Src/../Inc/SBUSCommenDefines.h \
+ ../Core/Los_Driver/Src/../Inc/LOS_D_SBUSSender.hpp
 ../Core/Los_Driver/Src/../Inc/LOS_D_SBUSReceiver.hpp:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
@@ -108,3 +109,4 @@ Core/Los_Driver/Src/LOS_D_SBUSReceiver.o: \
 ../Core/Inc/main.h:
 ../Core/Los_Driver/Src/../Inc/CommonDataTypes.h:
 ../Core/Los_Driver/Src/../Inc/SBUSCommenDefines.h:
+../Core/Los_Driver/Src/../Inc/LOS_D_SBUSSender.hpp:

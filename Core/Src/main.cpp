@@ -28,7 +28,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-//#include "../Simple_SM/Inc/Simple_Sytem_Manager.hpp"
+#include "../Simple_SM/Inc/Simple_Sytem_Manager.hpp"
 #include "../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp"
 #include "../Los_Driver/Inc/LOS_D_SBUSSender.hpp"
 /* USER CODE END Includes */
@@ -114,11 +114,10 @@ int main(void)
     /* USER CODE END WHILE */
     
     /* USER CODE BEGIN 3 */
-    sbus_data = SBUSReceiver::getInstance(&huart2)->GetSBUS();
-    control_data = SBUSReceiver::getInstance(&huart2)->GetRCControl();
-    SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
-
-	//HAL_Delay(100);
+//     sbus_data = SBUSReceiver::getInstance(&huart2)->GetSBUS();
+//     control_data = SBUSReceiver::getInstance(&huart2)->GetRCControl();
+//     SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
+    SSM::getInstance()->execute_manual_mode();
   }
   /* USER CODE END 3 */
 }

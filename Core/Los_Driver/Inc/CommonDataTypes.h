@@ -17,8 +17,6 @@ struct SBus{
 template<uint8_t Index, class T>
 struct ControlRef
 {
-    char trash;
-
     operator T&() // allows: double d = object.Member;
     {
         return ((T*)(this))[Index];

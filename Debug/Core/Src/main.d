@@ -51,9 +51,12 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/dma.h \
  ../Core/Inc/usart.h ../Core/Inc/rtc.h ../Core/Inc/ucpd.h \
  ../Core/Inc/usb.h ../Core/Inc/gpio.h \
+ ../Core/Src/../Simple_SM/Inc/Simple_Sytem_Manager.hpp \
+ ../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp \
+ ../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/CommonDataTypes.h \
+ ../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/SBUSCommenDefines.h \
+ ../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/LOS_D_SBUSSender.hpp \
  ../Core/Src/../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp \
- ../Core/Src/../Los_Driver/Inc/CommonDataTypes.h \
- ../Core/Src/../Los_Driver/Inc/SBUSCommenDefines.h \
  ../Core/Src/../Los_Driver/Inc/LOS_D_SBUSSender.hpp
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
@@ -113,7 +116,10 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Core/Inc/ucpd.h:
 ../Core/Inc/usb.h:
 ../Core/Inc/gpio.h:
+../Core/Src/../Simple_SM/Inc/Simple_Sytem_Manager.hpp:
+../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp:
+../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/CommonDataTypes.h:
+../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/SBUSCommenDefines.h:
+../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/LOS_D_SBUSSender.hpp:
 ../Core/Src/../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp:
-../Core/Src/../Los_Driver/Inc/CommonDataTypes.h:
-../Core/Src/../Los_Driver/Inc/SBUSCommenDefines.h:
 ../Core/Src/../Los_Driver/Inc/LOS_D_SBUSSender.hpp:

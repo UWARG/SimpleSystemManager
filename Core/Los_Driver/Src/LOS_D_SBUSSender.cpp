@@ -32,6 +32,12 @@ void SBUSSender::SetSBusValue(SBus values){
     send_sbus_ = values;
 }
 
+//void SBUSSender::SendData()
+//{
+//	assemble_packet();
+//	HAL_StatusTypeDef ret = HAL_UART_Transmit(uart_, send_buf_, SBUS_FRAME_SIZE, 100);
+//}
+
 void SBUSSender::SetRCControlValue(RCControl values)
 {
     for(uint8_t i = 0; i < 16; i++){
@@ -84,17 +90,11 @@ void SBUSSender::assemble_packet()
   send_buf_[24] = FOOTER_;
 }
 
-uint16_t rccontrol_to_sbus(float rccontrol)
+uint16_t SBUSSender::rccontrol_to_sbus(float rccontrol)
 {
     if (rccontrol < 0)
       rccontrol = 0;
     if (rccontrol > 100)
       rccontrol = 100;
     return static_cast<uint16_t>(SBUS_RANGE_MIN + (rccontrol * SBUS_RANGE_RANGE / 100.0f));
-}
-
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
-{
-	SBUSSender::getInstance(huart)->assemble_packet();
-	HAL_UART_Transmit_DMA (huart, SBUSSender::getInstance(huart)->send_buf_, SBUS_FRAME_SIZE);
 }

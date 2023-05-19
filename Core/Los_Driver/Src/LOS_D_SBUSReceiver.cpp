@@ -1,4 +1,5 @@
 #include "../Inc/LOS_D_SBUSReceiver.hpp"
+#include "../Inc/LOS_D_SBUSSender.hpp"
 
 SBUSReceiver* SBUSReceiver::singleton_ = NULL;
 
@@ -112,4 +113,6 @@ void SBUSReceiver::cast_rccontrol()
  {
 	 SBUSReceiver::getInstance(huart)->parse();
 	 HAL_UART_Receive_DMA (huart, SBUSReceiver::getInstance(huart)->raw_sbus_, SBUS_FRAME_SIZE);
+	 SBUSSender::getInstance(huart)->assemble_packet();
+	 HAL_UART_Transmit_DMA(huart, SBUSSender::getInstance(huart)->send_buf_, SBUS_FRAME_SIZE);
  }

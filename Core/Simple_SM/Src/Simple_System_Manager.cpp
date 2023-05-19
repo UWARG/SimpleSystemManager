@@ -29,19 +29,16 @@ SSM::SSM(){
 }
 
 SSM::~SSM(){
-    delete sbus_receive_handle_;
-    delete sbus_sender_handle_;
 }
 
 void SSM::config(){
-    // sbus_receive_handle_ = new SBUSReceiver(&huart2);
-    // sbus_sender_handle_ = new SBUSSender(&huart2);
+    sbus_uart_ = &huart2;
 }
 
 void SSM::fetch_command(SBus &sbus_data)
 {
-    RCControl command = sbus_receive_handle_->GetRCControl();
-    sbus_data = sbus_receive_handle_->GetSBUS();
+    RCControl command = SBUSReceiver::getInstance(sbus_uart_)->GetRCControl();
+    sbus_data = SBUSReceiver::getInstance(sbus_uart_)->GetSBUS();
     /* map the signal to the corresponse flight mode*/
     if(command.mode >= 0 && command.mode < (100.0f/6.0f) )
     {
@@ -71,7 +68,6 @@ void SSM::fetch_command(SBus &sbus_data)
 
 bool SSM::transmit_command(SBus &sbus_data)
 {
-    sbus_sender_handle_->SetSBusValue(sbus_data);
-    //sbus_sender_handle_->SendData();
+    SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
 }
 

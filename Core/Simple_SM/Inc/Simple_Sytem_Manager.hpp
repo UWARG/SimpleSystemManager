@@ -69,8 +69,7 @@ class SSM
         Flight_Mode flight_mode_;
         Drone_Arm drone_arm_;
         static SSM* singleton_;
-        SBUSReceiver* sbus_receive_handle_;
-        SBUSSender*  sbus_sender_handle_;
+        UART_HandleTypeDef* sbus_uart_;
 
         SSM();
         ~SSM();
