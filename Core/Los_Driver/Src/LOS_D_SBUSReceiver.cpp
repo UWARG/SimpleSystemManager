@@ -111,8 +111,10 @@ void SBUSReceiver::cast_rccontrol()
 
  void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  {
+	 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7,GPIO_PIN_SET);
 	 SBUSReceiver::getInstance(huart)->parse();
 	 HAL_UART_Receive_DMA (huart, SBUSReceiver::getInstance(huart)->raw_sbus_, SBUS_FRAME_SIZE);
 	 SBUSSender::getInstance(huart)->assemble_packet();
-	 HAL_UART_Transmit_DMA(huart, SBUSSender::getInstance(huart)->send_buf_, SBUS_FRAME_SIZE);
+	 HAL_UART_Transmit(huart, SBUSSender::getInstance(huart)->send_buf_, SBUS_FRAME_SIZE, 10);
+	 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7,GPIO_PIN_RESET);
  }

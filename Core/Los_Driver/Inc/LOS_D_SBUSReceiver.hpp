@@ -11,10 +11,9 @@
  * Word Length - 9 bits(Including Parity)
  * Parity - Even
  * Stop Bits - 2
+ * TX&RX Pin Activitive Level Inversion - enabled (this can depend on the type of sbus)
  * enable dma interrupt for uart_rx
- * also in order to let stm to detect the uart, the input signal
- * has to be in the standard uart polarity
- * (which sometimes the sbus has the inverted polarity)
+ * don't forget to enable uart IRQ
  */
 
 class SBUSReceiver{

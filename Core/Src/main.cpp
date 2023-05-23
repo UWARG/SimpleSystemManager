@@ -114,10 +114,10 @@ int main(void)
     /* USER CODE END WHILE */
     
     /* USER CODE BEGIN 3 */
-//     sbus_data = SBUSReceiver::getInstance(&huart2)->GetSBUS();
-//     control_data = SBUSReceiver::getInstance(&huart2)->GetRCControl();
-//     SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
-    SSM::getInstance()->execute_manual_mode();
+     sbus_data = SBUSReceiver::getInstance(&huart2)->GetSBUS();
+     control_data = SBUSReceiver::getInstance(&huart2)->GetRCControl();
+     SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
+   //SSM::getInstance()->execute_manual_mode();
   }
   /* USER CODE END 3 */
 }

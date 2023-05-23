@@ -1,4 +1,4 @@
 ../Core/Src/../Simple_SM/Inc/../../Los_Driver/Inc/CommonDataTypes.h:72:5:RCControl::RCControl()	16	static
-../Core/Src/main.cpp:71:5:int main()	112	static
+../Core/Src/main.cpp:71:5:int main()	264	static
 ../Core/Src/main.cpp:129:6:void SystemClock_Config()	104	static
 ../Core/Src/main.cpp:191:6:void Error_Handler()	4	static,ignoring_inline_asm
