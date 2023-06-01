@@ -1,7 +1,0 @@
-../Core/Los_Driver/Src/LOS_D_SBUSSender.cpp:5:13:static SBUSSender* SBUSSender::getInstance(UART_HandleTypeDef*)	24	static
-../Core/Los_Driver/Src/LOS_D_SBUSSender.cpp:13:1:SBUSSender::SBUSSender(UART_HandleTypeDef*)	24	static
-../Core/Los_Driver/Src/LOS_D_SBUSSender.cpp:27:6:void SBUSSender::SetChannelValue(uint8_t, float)	32	static
-../Core/Los_Driver/Src/LOS_D_SBUSSender.cpp:31:6:void SBUSSender::SetSBusValue(SBus)	24	static
-../Core/Los_Driver/Src/LOS_D_SBUSSender.cpp:41:6:void SBUSSender::SetRCControlValue(RCControl)	32	static
-../Core/Los_Driver/Src/LOS_D_SBUSSender.cpp:48:6:void SBUSSender::assemble_packet()	16	static
-../Core/Los_Driver/Src/LOS_D_SBUSSender.cpp:93:10:uint16_t SBUSSender::rccontrol_to_sbus(float)	16	static

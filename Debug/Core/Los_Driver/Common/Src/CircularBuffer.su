@@ -1,0 +1,6 @@
+../Core/Los_Driver/Common/Src/CircularBuffer.cpp:4:9:uint8_t CircularBuffer::peek(uint8_t&, int)	24	static
+../Core/Los_Driver/Common/Src/CircularBuffer.cpp:12:9:uint8_t CircularBuffer::read(uint8_t*, int)	40	static
+../Core/Los_Driver/Common/Src/CircularBuffer.cpp:34:1:CircularBuffer::CircularBuffer(uint8_t*, int)	24	static
+../Core/Los_Driver/Common/Src/CircularBuffer.cpp:39:1:CircularBuffer::CircularBuffer()	16	static
+../Core/Los_Driver/Common/Src/CircularBuffer.cpp:44:6:bool CircularBuffer::hasSpace()	16	static
+../Core/Los_Driver/Common/Src/CircularBuffer.cpp:48:9:uint8_t CircularBuffer::write(uint8_t)	16	static

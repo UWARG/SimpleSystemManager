@@ -5,5 +5,5 @@
 ../Core/Simple_SM/Src/Simple_System_Manager.cpp:34:6:void SSM::config()	16	static
 ../Core/Simple_SM/Src/Simple_System_Manager.cpp:38:6:void SSM::fetch_command(SBus&)	160	static
 ../Core/Simple_SM/Src/Simple_System_Manager.cpp:69:6:bool SSM::transmit_command(SBus&)	64	static
-../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/CommonDataTypes.h:20:5:ControlRef<Index, T>::operator T&() [with unsigned char Index = 7; T = float]	16	static
-../Core/Simple_SM/Src/../Inc/../../Los_Driver/Inc/CommonDataTypes.h:39:10:bool ControlRef<Index, T>::operator<(const T&) [with unsigned char Index = 7; T = float]	16	static
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/SBUS/Inc/CommonDataTypes.h:20:5:ControlRef<Index, T>::operator T&() [with unsigned char Index = 7; T = float]	16	static
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/SBUS/Inc/CommonDataTypes.h:39:10:bool ControlRef<Index, T>::operator<(const T&) [with unsigned char Index = 7; T = float]	16	static

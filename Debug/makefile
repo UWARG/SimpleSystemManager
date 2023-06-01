@@ -13,7 +13,9 @@ RM := rm -rf
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include Core/Simple_SM/Src/subdir.mk
--include Core/Los_Driver/Src/subdir.mk
+-include Core/Los_Driver/SSM_MAVLink_Driver/Src/subdir.mk
+-include Core/Los_Driver/SBUS/Src/subdir.mk
+-include Core/Los_Driver/Common/Src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -77,8 +79,8 @@ all: main-build
 main-build: SimpleSystemManager.elf secondary-outputs
 
 # Tool invocations
-SimpleSystemManager.elf SimpleSystemManager.map: $(OBJS) $(USER_OBJS) C:\WARG\Simple_System_Manager\SimpleSystemManager\STM32L552ZETXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "SimpleSystemManager.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\WARG\Simple_System_Manager\SimpleSystemManager\STM32L552ZETXQ_FLASH.ld" -Wl,-Map="SimpleSystemManager.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+SimpleSystemManager.elf SimpleSystemManager.map: $(OBJS) $(USER_OBJS) C:\WARG\Simple_SM_Mav_branch\SimpleSystemManager\STM32L552ZETXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "SimpleSystemManager.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\WARG\Simple_SM_Mav_branch\SimpleSystemManager\STM32L552ZETXQ_FLASH.ld" -Wl,-Map="SimpleSystemManager.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

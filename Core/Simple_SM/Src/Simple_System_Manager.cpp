@@ -32,13 +32,13 @@ SSM::~SSM(){
 }
 
 void SSM::config(){
-    sbus_uart_ = &huart2;
+    /*empty for now*/
 }
 
 void SSM::fetch_command(SBus &sbus_data)
 {
-	sbus_data = SBUSReceiver::getInstance(sbus_uart_)->GetSBUS();
-    RCControl command = SBUSReceiver::getInstance(sbus_uart_)->GetRCControl();
+	sbus_data = SBUSReceiver::getInstance(sbus_uart)->GetSBUS();
+    RCControl command = SBUSReceiver::getInstance(sbus_uart)->GetRCControl();
     /* map the signal to the corresponse flight mode*/
     if(command.mode >= 0 && command.mode < (100.0f/6.0f) )
     {

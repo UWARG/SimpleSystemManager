@@ -9,8 +9,9 @@
 #define SIMPLE_SM_INC_SIMPLE_SYTEM_MANAGER_HPP_
 
 #include "main.h"
-#include "../../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp"
-#include "../../Los_Driver/Inc/LOS_D_SBUSSender.hpp"
+#include "../../Los_Driver/SBUS/Inc/LOS_D_SBUSReceiver.hpp"
+#include "../../Los_Driver/SBUS/Inc/LOS_D_SBUSSender.hpp"
+#include "../../Los_Driver/Common/Inc/driver_config.hpp"
 
 enum Drone_State
 {
@@ -69,7 +70,6 @@ class SSM
         Flight_Mode flight_mode_;
         Drone_Arm drone_arm_;
         static SSM* singleton_;
-        UART_HandleTypeDef* sbus_uart_;
 
         SSM();
         ~SSM();

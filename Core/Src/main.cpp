@@ -29,8 +29,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "../Simple_SM/Inc/Simple_Sytem_Manager.hpp"
-#include "../Los_Driver/Inc/LOS_D_SBUSReceiver.hpp"
-#include "../Los_Driver/Inc/LOS_D_SBUSSender.hpp"
+#include "../Los_Driver/SSM_MAVLink_Driver/Inc/SSM_D_MAVLink.hpp"
+#include "../Los_Driver/Common/Inc/driver_config.hpp"
+#include <cstdarg>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,11 +100,12 @@ int main(void)
   MX_USB_PCD_Init();
   MX_ADC1_Init();
   MX_USART2_UART_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-
-  SBus sbus_data;
-  RCControl control_data;
   HAL_StatusTypeDef ret;
+  mavlink_message_t mav_msg;
+
+  //HAL_UARTEx_ReceiveToIdle_DMA(&huart3, pixhawk_mavlink->raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
 
   /* USER CODE END 2 */
 
@@ -114,10 +116,8 @@ int main(void)
     /* USER CODE END WHILE */
     
     /* USER CODE BEGIN 3 */
-     sbus_data = SBUSReceiver::getInstance(&huart2)->GetSBUS();
-     control_data = SBUSReceiver::getInstance(&huart2)->GetRCControl();
-     SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
-   //SSM::getInstance()->execute_manual_mode();
+//     SSM::getInstance()->execute_manual_mode();
+      mav_msg = *(pixhawk_mavlink->get_mavlink_msg());
   }
   /* USER CODE END 3 */
 }
@@ -181,6 +181,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
 
 /* USER CODE END 4 */
 

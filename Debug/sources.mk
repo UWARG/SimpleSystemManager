@@ -31,7 +31,9 @@ CPP_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-Core/Los_Driver/Src \
+Core/Los_Driver/Common/Src \
+Core/Los_Driver/SBUS/Src \
+Core/Los_Driver/SSM_MAVLink_Driver/Src \
 Core/Simple_SM/Src \
 Core/Src \
 Core/Startup \
