@@ -62,6 +62,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void myprintf(const char *fmt, ...);
 
 /* USER CODE END 0 */
 
@@ -103,9 +104,12 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_StatusTypeDef ret;
-  mavlink_message_t mav_msg;
+  MAVLinkMessage_t mav_msg;
+  MAVLinkACK_t expected_ack;
 
   //HAL_UARTEx_ReceiveToIdle_DMA(&huart3, pixhawk_mavlink->raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
+
+  expected_ack = pixhawk_mavlink->sendInitialConfigs();
 
   /* USER CODE END 2 */
 
@@ -117,7 +121,24 @@ int main(void)
     
     /* USER CODE BEGIN 3 */
 //     SSM::getInstance()->execute_manual_mode();
-      mav_msg = *(pixhawk_mavlink->get_mavlink_msg());
+	  pixhawk_mavlink->readMessage();
+    pixhawk_mavlink->receiveMessage(mav_msg);
+    if(mav_msg.type == MAVLinkMessageType::ACK){
+    	myprintf("Received ACK:\r\n");
+    	myprintf("The ack type is %d\r\n", mav_msg.ack.type );
+    }else if(mav_msg.type == MAVLinkMessageType::HEARTBEAT){
+    	myprintf("Received heartbeat:\r\n");
+    	myprintf("The mavlink version is  %d\r\n", mav_msg.heartbeat.mavlink_version );
+    }
+    pixhawk_mavlink->sendFlightModeChange(PLANE_MODE_MANUAL);
+    HAL_Delay(100);
+    pixhawk_mavlink->sendHeartbeat();
+
+    HAL_Delay(100);
+    pixhawk_mavlink->sendWaypointNav(100, 100, 100, 100);
+    HAL_Delay(100);
+    pixhawk_mavlink->sendArmDisarm(true);
+    HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }
@@ -181,6 +202,17 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void myprintf(const char *fmt, ...) {
+  static char buffer[256];
+  va_list args;
+  va_start(args, fmt);
+  vsnprintf(buffer, sizeof(buffer), fmt, args);
+  va_end(args);
+
+  int len = strlen(buffer);
+  HAL_UART_Transmit(&hlpuart1, (uint8_t*)buffer, len, -1);
+}
 
 
 /* USER CODE END 4 */

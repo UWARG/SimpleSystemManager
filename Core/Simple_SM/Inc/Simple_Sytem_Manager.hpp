@@ -63,6 +63,15 @@ class SSM
         execute in the integration of all the function calls needed for
         a single execution of SM
     */
+   /*
+        TODO: 
+        While keeping the sbus passing 
+        1. sending heartbeat mavlink at about 1hz
+        2. for the command send out from here, there is a way to check we receive the ack message back
+        3. come out with some testing function designated for 
+        4. set up the architecture for the whole mavlink system and how we wish the mavlink driver to accommodate the system
+        5. think of how to improve the mavlink driver such that more mavlink channels can be easily used while making alot of thing happening underground
+   */
         void execute();
 
     private:
@@ -125,6 +134,7 @@ class SSM
         transmit the telementry data to RFD
     */
         void telem_to_ground();
+
 };
 
 

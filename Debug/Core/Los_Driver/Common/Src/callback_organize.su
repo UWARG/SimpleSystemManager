@@ -1,5 +1,3 @@
-../Core/Los_Driver/Common/Src/../../SSM_MAVLink_Driver/Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:23:34:mavlink_status_t* mavlink_get_channel_status(uint8_t)	16	static
-../Core/Los_Driver/Common/Src/../../SSM_MAVLink_Driver/Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:63:21:void mavlink_reset_channel_status(uint8_t)	24	static
-../Core/Los_Driver/Common/Src/callback_organize.cpp:7:6:void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*, uint16_t)	16	static
-../Core/Los_Driver/Common/Src/callback_organize.cpp:43:7:void HAL_UART_RxCpltCallback(UART_HandleTypeDef*)	16	static
-../Core/Los_Driver/Common/Src/callback_organize.cpp:65:7:void HAL_UART_ErrorCallback(UART_HandleTypeDef*)	16	static
+../Core/Los_Driver/Common/Src/callback_organize.cpp:7:6:void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*, uint16_t)	24	static
+../Core/Los_Driver/Common/Src/callback_organize.cpp:27:7:void HAL_UART_RxCpltCallback(UART_HandleTypeDef*)	16	static
+../Core/Los_Driver/Common/Src/callback_organize.cpp:49:7:void HAL_UART_ErrorCallback(UART_HandleTypeDef*)	16	static

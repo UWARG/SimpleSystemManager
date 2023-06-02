@@ -4,6 +4,11 @@
  *  Created on: May 26, 2023
  */
 
+/*
+    Be Careful when configure the uart for this driver
+    The baudrate of the uart has to be corresponds to the ardupilot/ground side setting
+*/
+
 #ifndef LOS_DRIVER_SSM_MAVLINK_DRIVER_INC_SSM_D_MAVLINK_HPP_
 #define LOS_DRIVER_SSM_MAVLINK_DRIVER_INC_SSM_D_MAVLINK_HPP_
 
@@ -50,6 +55,8 @@ class MAVLink {
 		MAVLink(UART_HandleTypeDef* uart_handle);
         ~MAVLink();
 
+        /* ------------------ Commands Available to Send ------------------*/
+
         /* Send a heartbeat message to sync with ArduPilot. This needs to be done
          * at ideally 1Hz and no less than 0.2Hz.
          */
@@ -82,16 +89,22 @@ class MAVLink {
         /* Clear all missions, including VTOL take-off and waypoint navigation. */
         MAVLinkACK_t sendClearMissions();
 
-        /* Receive a message from ArduPilot. */
+        /* ---------------------- Receiving Methods -------------------*/
+
+        /*
+            Trigger after receiving a message
+            Figuare the message type in this function and further calling correct consequent function
+        */
 		bool receiveMessage(MAVLinkMessage_t& mavlink_message);
 
         /* Check an ACK message against an expected ACK results. */
         bool checkMessageACK(const MAVLinkMessage_t mavlink_message, const MAVLinkACK_t expected_ack);
 
-        /* a helper function on receiveing and parsing data*/
+        /* 
+            a helper function on receiveing and parsing data
+            need to be constantly called in a loop to constantly parsing the incoming message
+        */
         bool readMessage();
-
-        mavlink_message_t* get_mavlink_msg();
 
 	private:
         UART_HandleTypeDef* uart_;
@@ -106,11 +119,20 @@ class MAVLink {
 		mavlink_status_t last_status;
 
 
+        /* ------------------- Helper Methods --------------*/
 
 		void writeMessage(const mavlink_message_t &msg);
         void sendCommandLong(mavlink_command_long_t command_long);
         bool compareParamId(const char id1[16], const char id2[16]);
 };
+
+/* Some Functions that can be further worked on
+
+    1. Recognizing the existance of other devices, through heartbeat
+    2. Automatically handles the ack message, that is, after sending out a message, it wait for ack
+    3. Make the driver able to handle more types of message, not only ack and heartbeat
+
+*/
 
 
 #endif /* LOS_DRIVER_SSM_MAVLINK_DRIVER_INC_SSM_D_MAVLINK_HPP_ */
