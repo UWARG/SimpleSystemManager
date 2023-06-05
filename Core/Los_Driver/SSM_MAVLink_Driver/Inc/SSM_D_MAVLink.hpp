@@ -131,7 +131,8 @@ class MAVLink {
     1. Recognizing the existance of other devices, through heartbeat
     2. Automatically handles the ack message, that is, after sending out a message, it wait for ack
     3. Make the driver able to handle more types of message, not only ack and heartbeat
-
+    4. all message received are properly handled, not processed twice
+        solution: adding a queue to handle the incoming message
 */
 
 
