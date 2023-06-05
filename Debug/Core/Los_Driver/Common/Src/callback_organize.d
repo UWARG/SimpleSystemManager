@@ -365,7 +365,7 @@ Core/Los_Driver/Common/Src/callback_organize.o: \
  ../Core/Los_Driver/Common/Src/../../SSM_MAVLink_Driver/Inc/../../Common/Inc/CircularBuffer.hpp \
  ../Core/Los_Driver/Common/Src/../../SBUS/Inc/LOS_D_SBUSReceiver.hpp \
  ../Core/Inc/usart.h ../Core/Inc/main.h \
- ../Core/Los_Driver/Common/Src/../../SBUS/Inc/CommonDataTypes.h \
+ ../Core/Los_Driver/Common/Src/../../SBUS/Inc/../../Common/Inc/CommonDataTypes.h \
  ../Core/Los_Driver/Common/Src/../../SBUS/Inc/SBUSCommenDefines.h \
  ../Core/Los_Driver/Common/Src/../../SBUS/Inc/LOS_D_SBUSSender.hpp \
  ../Core/Los_Driver/Common/Src/../Inc/driver_config.hpp \
@@ -737,7 +737,7 @@ c:\warg\simple_sm_mav_branch\simplesystemmanager\core\los_driver\ssm_mavlink_dri
 ../Core/Los_Driver/Common/Src/../../SBUS/Inc/LOS_D_SBUSReceiver.hpp:
 ../Core/Inc/usart.h:
 ../Core/Inc/main.h:
-../Core/Los_Driver/Common/Src/../../SBUS/Inc/CommonDataTypes.h:
+../Core/Los_Driver/Common/Src/../../SBUS/Inc/../../Common/Inc/CommonDataTypes.h:
 ../Core/Los_Driver/Common/Src/../../SBUS/Inc/SBUSCommenDefines.h:
 ../Core/Los_Driver/Common/Src/../../SBUS/Inc/LOS_D_SBUSSender.hpp:
 ../Core/Los_Driver/Common/Src/../Inc/driver_config.hpp:

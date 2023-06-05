@@ -3,7 +3,7 @@
 
 #include "main.h"
 #include "usart.h"
-#include "CommonDataTypes.h"
+#include "../../Common/Inc/CommonDataTypes.h"
 #include "SBUSCommenDefines.h"
 
 /*

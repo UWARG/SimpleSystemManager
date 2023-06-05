@@ -11,6 +11,7 @@
 
 #define sbus_uart       &huart2
 #define pixhawk_mavlink_uart    &huart3
+#define ground_mavlink_uart     &huart4
 
 /*
     MAVlink Instances
@@ -18,6 +19,7 @@
 #include "../../SSM_MAVLink_Driver/Inc/SSM_D_MAVLink.hpp"
 
 extern MAVLink* pixhawk_mavlink;
+extern MAVLink* ground_mavlink;
 
 
 #endif

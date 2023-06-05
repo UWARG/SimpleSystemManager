@@ -1,7 +1,5 @@
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../checksum.h:35:20:void crc_accumulate(uint8_t, uint16_t*)	24	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../checksum.h:52:20:void crc_init(uint16_t*)	16	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../checksum.h:65:24:uint16_t crc_calculate(const uint8_t*, uint16_t)	24	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../checksum.h:85:20:void crc_accumulate_buffer(uint16_t*, const char*, uint16_t)	32	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_sha256.h:91:21:void mavlink_sha256_init(mavlink_sha256_ctx*)	16	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_sha256.h:105:20:void mavlink_sha256_calc(mavlink_sha256_ctx*, uint32_t*)	320	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_sha256.h:152:21:void mavlink_sha256_update(mavlink_sha256_ctx*, const void*, uint32_t)	120	static
@@ -9,12 +7,8 @@
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:23:34:mavlink_status_t* mavlink_get_channel_status(uint8_t)	16	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:39:35:mavlink_message_t* mavlink_get_channel_buffer(uint8_t)	16	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:63:21:void mavlink_reset_channel_status(uint8_t)	24	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:73:24:uint8_t mavlink_sign_packet(mavlink_signing_t*, uint8_t*, const uint8_t*, uint8_t, const uint8_t*, uint8_t, const uint8_t*)	144	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:111:24:uint8_t _mav_trim_payload(const char*, uint8_t)	16	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:123:21:bool mavlink_signature_check(mavlink_signing_t*, mavlink_signing_streams_t*, const mavlink_message_t*)	184	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:217:25:uint16_t mavlink_finalize_message_buffer(mavlink_message_t*, uint8_t, uint8_t, mavlink_status_t*, uint8_t, uint8_t, uint8_t)	80	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:286:25:uint16_t mavlink_finalize_message_chan(mavlink_message_t*, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t)	40	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:296:25:uint16_t mavlink_finalize_message(mavlink_message_t*, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t)	32	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:302:20:void _mav_parse_error(mavlink_status_t*)	16	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:439:25:uint16_t mavlink_msg_to_send_buffer(uint8_t*, const mavlink_message_t*)	32	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:492:21:void mavlink_start_checksum(mavlink_message_t*)	24	static
@@ -23,31 +17,7 @@
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:582:24:uint8_t mavlink_frame_char_buffer(mavlink_message_t*, mavlink_status_t*, uint8_t, mavlink_message_t*, mavlink_status_t*)	40	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:906:24:uint8_t mavlink_frame_char(uint8_t, uint8_t, mavlink_message_t*, mavlink_status_t*)	40	static
 ../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../mavlink_helpers.h:984:24:uint8_t mavlink_parse_char(uint8_t, uint8_t, mavlink_message_t*, mavlink_status_t*)	40	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../protocol.h:171:20:void mav_array_memcpy(void*, const void*, size_t)	24	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_param_value.h:292:20:void mavlink_msg_param_value_decode(const mavlink_message_t*, mavlink_param_value_t*)	24	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_param_set.h:63:24:uint16_t mavlink_msg_param_set_pack(uint8_t, uint8_t, mavlink_message_t*, uint8_t, uint8_t, const char*, float, uint8_t)	56	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_param_set.h:135:24:uint16_t mavlink_msg_param_set_encode(uint8_t, uint8_t, mavlink_message_t*, const mavlink_param_set_t*)	48	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_mission_clear_all.h:55:24:uint16_t mavlink_msg_mission_clear_all_pack(uint8_t, uint8_t, mavlink_message_t*, uint8_t, uint8_t, uint8_t)	32	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_mission_clear_all.h:121:24:uint16_t mavlink_msg_mission_clear_all_encode(uint8_t, uint8_t, mavlink_message_t*, const mavlink_mission_clear_all_t*)	40	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_mission_ack.h:276:20:void mavlink_msg_mission_ack_decode(const mavlink_message_t*, mavlink_mission_ack_t*)	24	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_command_long.h:87:24:uint16_t mavlink_msg_command_long_pack(uint8_t, uint8_t, mavlink_message_t*, uint8_t, uint8_t, uint16_t, uint8_t, float, float, float, float, float, float, float)	96	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_command_long.h:193:24:uint16_t mavlink_msg_command_long_encode(uint8_t, uint8_t, mavlink_message_t*, const mavlink_command_long_t*)	48	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/../Inc/MAVLink/ardupilotmega/../common/./mavlink_msg_command_ack.h:324:20:void mavlink_msg_command_ack_decode(const mavlink_message_t*, mavlink_command_ack_t*)	24	static
-c:\warg\simple_sm_mav_branch\simplesystemmanager\core\los_driver\ssm_mavlink_driver\inc\mavlink\minimal\mavlink_msg_heartbeat.h:66:24:uint16_t mavlink_msg_heartbeat_pack(uint8_t, uint8_t, mavlink_message_t*, uint8_t, uint8_t, uint8_t, uint32_t, uint8_t)	40	static
-c:\warg\simple_sm_mav_branch\simplesystemmanager\core\los_driver\ssm_mavlink_driver\inc\mavlink\minimal\mavlink_msg_heartbeat.h:146:24:uint16_t mavlink_msg_heartbeat_encode(uint8_t, uint8_t, mavlink_message_t*, const mavlink_heartbeat_t*)	56	static
-c:\warg\simple_sm_mav_branch\simplesystemmanager\core\los_driver\ssm_mavlink_driver\inc\mavlink\minimal\mavlink_msg_heartbeat.h:321:20:void mavlink_msg_heartbeat_decode(const mavlink_message_t*, mavlink_heartbeat_t*)	24	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:13:1:MAVLink::MAVLink(UART_HandleTypeDef*)	32	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:22:1:MAVLink::~MAVLink()	16	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:28:6:bool MAVLink::readMessage()	336	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:50:6:bool MAVLink::receiveMessage(MAVLinkMessage_t&)	72	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:112:6:bool MAVLink::checkMessageACK(MAVLinkMessage_t, MAVLinkACK_t)	72	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:142:6:void MAVLink::sendHeartbeat()	320	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:154:14:MAVLinkACK_t MAVLink::sendInitialConfigs()	344	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:178:14:MAVLinkACK_t MAVLink::sendArmDisarm(bool)	96	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:193:14:MAVLinkACK_t MAVLink::sendFlightModeChange(PLANE_MODE)	96	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:208:14:MAVLinkACK_t MAVLink::sendVTOLTakeOff(float)	96	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:223:14:MAVLinkACK_t MAVLink::sendWaypointNav(float, float, float, float)	104	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:242:14:MAVLinkACK_t MAVLink::sendClearMissions()	312	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:262:6:void MAVLink::writeMessage(const mavlink_message_t&)	304	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:269:6:void MAVLink::sendCommandLong(mavlink_command_long_t)	320	static
-../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:280:6:bool MAVLink::compareParamId(const char*, const char*)	64	static
+../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:10:1:MAVLink::MAVLink(UART_HandleTypeDef*)	32	static
+../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:20:1:MAVLink::~MAVLink()	16	static
+../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:24:6:bool MAVLink::readMessage(mavlink_message_t&)	336	static
+../Core/Los_Driver/SSM_MAVLink_Driver/Src/SSM_D_MAVLink.cpp:47:6:void MAVLink::writeMessage(mavlink_message_t)	312	static

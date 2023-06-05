@@ -2,6 +2,7 @@
 #define COMMON_DATA_TYPES_H
 
 #include <cstdint>
+//#include "../../SSM_MAVLink_Driver/Inc/MAVLink/ardupilotmega/mavlink.h"
 
 #define SBUS_INPUT_CHANNELS	16
 

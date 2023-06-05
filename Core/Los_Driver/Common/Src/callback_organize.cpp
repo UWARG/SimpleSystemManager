@@ -13,8 +13,25 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t size){
         {
             pixhawk_mavlink->rx_circular_buffer_->write(pixhawk_mavlink->raw_rx_msg_[i]);
         }
+        pixhawk_mavlink->is_new_ = true;
         //listen to more data
         HAL_UARTEx_ReceiveToIdle_DMA(huart, pixhawk_mavlink->raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
+        __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
+
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7,GPIO_PIN_RESET); //turn off green light
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9,GPIO_PIN_RESET); //turn off red light
+    }
+
+    if(huart == ground_mavlink_uart){
+        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7,GPIO_PIN_SET); //turn on green light
+
+        for (uint16_t i = 0; i < size; i++)
+        {
+            ground_mavlink->rx_circular_buffer_->write(ground_mavlink->raw_rx_msg_[i]);
+        }
+        ground_mavlink->is_new_ = true;
+        //listen to more data
+        HAL_UARTEx_ReceiveToIdle_DMA(huart, ground_mavlink->raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
         __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
 
         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7,GPIO_PIN_RESET); //turn off green light
@@ -44,6 +61,14 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t size){
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7,GPIO_PIN_RESET); //turn off blue light
     }
 
+    if(huart == ground_mavlink_uart){
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7,GPIO_PIN_SET); //turn on blue light
+        /*
+            should never enter this callback
+        */
+        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7,GPIO_PIN_RESET); //turn off blue light
+    }
+
  }
 
  void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
@@ -56,6 +81,12 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t size){
     if(huart == pixhawk_mavlink_uart){
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9,GPIO_PIN_SET); //turn on red light
         HAL_UART_DMAStop(huart);
-        HAL_UARTEx_ReceiveToIdle_DMA(&huart3, pixhawk_mavlink->raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
+        HAL_UARTEx_ReceiveToIdle_DMA(huart, pixhawk_mavlink->raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
     }
+    if(huart == ground_mavlink_uart){
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9,GPIO_PIN_SET); //turn on red light
+        HAL_UART_DMAStop(huart);
+        HAL_UARTEx_ReceiveToIdle_DMA(huart, ground_mavlink->raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
+    }
+
  }

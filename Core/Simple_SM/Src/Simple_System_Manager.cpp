@@ -24,6 +24,21 @@ void SSM::execute_manual_mode()
     transmit_command(sbus_data);
 }
 
+void SSM::execute_mavlink_passing(){
+    forwarding_MAVLink();
+}
+
+void SSM::execute(){
+    SBus sbus_data;
+    fetch_command(sbus_data);
+    if(status_ == autonomous ){
+        forwarding_MAVLink();
+    }
+    else {
+        transmit_command(sbus_data);
+    }
+}
+
 SSM::SSM(){
     config();
 }
@@ -69,5 +84,16 @@ void SSM::fetch_command(SBus &sbus_data)
 bool SSM::transmit_command(SBus &sbus_data)
 {
     SBUSSender::getInstance(&huart2)->SetSBusValue(sbus_data);
+}
+
+void SSM::forwarding_MAVLink(){
+    mavlink_message_t new_message;
+    if (pixhawk_mavlink->readMessage(new_message)){
+        ground_mavlink->writeMessage(new_message);
+    }
+
+    if (ground_mavlink->readMessage(new_message)){
+        pixhawk_mavlink->writeMessage(new_message);
+    }
 }
 

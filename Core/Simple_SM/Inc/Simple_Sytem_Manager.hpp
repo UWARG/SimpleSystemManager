@@ -11,8 +11,8 @@
 #include "main.h"
 #include "../../Los_Driver/SBUS/Inc/LOS_D_SBUSReceiver.hpp"
 #include "../../Los_Driver/SBUS/Inc/LOS_D_SBUSSender.hpp"
+#include "../../Los_Driver/SSM_MAVLink_Driver/Inc/SSM_D_MAVLink.hpp"
 #include "../../Los_Driver/Common/Inc/driver_config.hpp"
-
 enum Drone_State
 {
     manual,         //high level manual and autonomous
@@ -59,19 +59,15 @@ class SSM
         void execute_manual_mode();
 
     /*
+        the testing function on mavlink forwarding
+    */
+        void execute_mavlink_passing();
+
+    /*
         this function should be called in loop by main()
         execute in the integration of all the function calls needed for
         a single execution of SM
     */
-   /*
-        TODO: 
-        While keeping the sbus passing 
-        1. sending heartbeat mavlink at about 1hz
-        2. for the command send out from here, there is a way to check we receive the ack message back
-        3. come out with some testing function designated for 
-        4. set up the architecture for the whole mavlink system and how we wish the mavlink driver to accommodate the system
-        5. think of how to improve the mavlink driver such that more mavlink channels can be easily used while making alot of thing happening underground
-   */
         void execute();
 
     private:
@@ -109,32 +105,15 @@ class SSM
         void set_auto();
 
     /*
-        fetch teh auto command from the RFD 900
+        forward the MAVLink data toward the correct destination
     */
-        void fetch_auto_command();
+        void forwarding_MAVLink();
 
     /*
         by decode the telementry data fetched
         determine the quality of the command
     */
-        bool check_auto_connection();
-
-    /*
-        encode the telementry data into MAVLink format
-        and transmit the data to pixhawk
-    */
-        void transmit_MAVLink();
-
-    /*
-        waiting for the response MAVlink from pixhawk
-    */
-        void receive_MAVLink();
-
-    /*
-        transmit the telementry data to RFD
-    */
-        void telem_to_ground();
-
+        bool check_Telem_connection();
 };
 
 

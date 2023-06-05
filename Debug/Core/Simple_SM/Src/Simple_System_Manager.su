@@ -1,9 +1,12 @@
 ../Core/Simple_SM/Src/Simple_System_Manager.cpp:11:6:static SSM* SSM::getInstance()	16	static
 ../Core/Simple_SM/Src/Simple_System_Manager.cpp:20:6:void SSM::execute_manual_mode()	56	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:27:1:SSM::SSM()	16	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:31:1:SSM::~SSM()	16	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:34:6:void SSM::config()	16	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:38:6:void SSM::fetch_command(SBus&)	160	static
-../Core/Simple_SM/Src/Simple_System_Manager.cpp:69:6:bool SSM::transmit_command(SBus&)	64	static
-../Core/Simple_SM/Src/../Inc/../../Los_Driver/SBUS/Inc/CommonDataTypes.h:20:5:ControlRef<Index, T>::operator T&() [with unsigned char Index = 7; T = float]	16	static
-../Core/Simple_SM/Src/../Inc/../../Los_Driver/SBUS/Inc/CommonDataTypes.h:39:10:bool ControlRef<Index, T>::operator<(const T&) [with unsigned char Index = 7; T = float]	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:27:6:void SSM::execute_mavlink_passing()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:31:6:void SSM::execute()	56	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:42:1:SSM::SSM()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:46:1:SSM::~SSM()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:49:6:void SSM::config()	16	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:53:6:void SSM::fetch_command(SBus&)	160	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:84:6:bool SSM::transmit_command(SBus&)	64	static
+../Core/Simple_SM/Src/Simple_System_Manager.cpp:89:6:void SSM::forwarding_MAVLink()	600	static
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/SBUS/Inc/../../Common/Inc/CommonDataTypes.h:21:5:ControlRef<Index, T>::operator T&() [with unsigned char Index = 7; T = float]	16	static
+../Core/Simple_SM/Src/../Inc/../../Los_Driver/SBUS/Inc/../../Common/Inc/CommonDataTypes.h:40:10:bool ControlRef<Index, T>::operator<(const T&) [with unsigned char Index = 7; T = float]	16	static
