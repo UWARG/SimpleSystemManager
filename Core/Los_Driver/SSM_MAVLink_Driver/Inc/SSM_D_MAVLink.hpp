@@ -18,13 +18,14 @@
 #include "../../Common/Inc/CircularBuffer.hpp"
 //#include "../../Common/Inc/CommonDataTypes.h"
 
+#define RAW_MAVLINK_LENGTH 500
+
 class MAVLink {
 	public:
 
         uint8_t rx_circular_buffer_ptr_[1000];
         CircularBuffer* rx_circular_buffer_;
-        uint8_t raw_rx_msg_[MAVLINK_MAX_PACKET_LEN];
-        bool is_new_;
+        uint8_t raw_rx_msg_[RAW_MAVLINK_LENGTH];
         
         /* Constructor */
 		MAVLink(UART_HandleTypeDef* uart_handle);

@@ -9,7 +9,7 @@
 
 MAVLink::MAVLink(UART_HandleTypeDef* uart_handle) : uart_(uart_handle)
 {
-    is_new_ = false;
+
     rx_circular_buffer_ = new CircularBuffer(rx_circular_buffer_ptr_, 1000);
 
     for(int i = 0; i < MAVLINK_MAX_PACKET_LEN; i++){
@@ -25,17 +25,16 @@ bool MAVLink::readMessage(mavlink_message_t& message)
 {
     //if Data Reception process is not ongoing, then activate it
     if(uart_->RxState != HAL_UART_STATE_BUSY_RX){
-        HAL_UARTEx_ReceiveToIdle_DMA(uart_, raw_rx_msg_, MAVLINK_MAX_PACKET_LEN);
+        HAL_UARTEx_ReceiveToIdle_DMA(uart_, raw_rx_msg_, sizeof(raw_rx_msg_));
     }
 
     uint8_t byte = 0;
 	mavlink_status_t status = {};
     mavlink_message_t rx_msg;
 
-    while(rx_circular_buffer_->read(&byte, 1) && is_new_){
+    while(rx_circular_buffer_->read(&byte, 1)){
         if( mavlink_parse_char(MAVLINK_COMM_1, byte, &(rx_msg), &status)){
             mavlink_reset_channel_status(MAVLINK_COMM_1);
-            is_new_ = false;
             message = rx_msg;
 
             return true;
